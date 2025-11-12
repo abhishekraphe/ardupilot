@@ -1,11 +1,11 @@
 #!/bin/bash
-# Script to complete the ArduPilot repository sync
+# Script to sync forked repository with upstream
 # This script should be run with proper GitHub authentication
 
 set -e  # Exit on error
 
-echo "ArduPilot Repository Sync Script"
-echo "================================="
+echo "Repository Sync Script"
+echo "======================"
 echo ""
 
 # Check if we're in the right directory

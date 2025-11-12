@@ -32,7 +32,7 @@ This will sync all 531 tags from the upstream ArduPilot repository to the forked
 ### 3. Verify the sync
 
 Check that the master branch and tags are now available on GitHub:
-- Visit: https://github.com/abhishekraphe/ardupilot
+- Visit your repository on GitHub
 - Verify that the master branch exists and matches upstream
 - Verify that tags are present in the repository
 
@@ -41,8 +41,8 @@ Check that the master branch and tags are now available on GitHub:
 If you have GitHub CLI (`gh`) installed and authenticated:
 
 ```bash
-# Push master branch
-gh repo sync abhishekraphe/ardupilot --source ArduPilot/ardupilot --branch master
+# Push master branch (replace with your fork path)
+gh repo sync <your-username>/<your-repo> --source <upstream-org>/<upstream-repo> --branch master
 
 # Push tags
 git push origin --tags

@@ -86,9 +86,11 @@ These operations require either:
 
 After completing the sync (via any option above), verify:
 
-1. **Master Branch**: Visit https://github.com/abhishekraphe/ardupilot/tree/master
-2. **Tags**: Visit https://github.com/abhishekraphe/ardupilot/tags
+1. **Master Branch**: Visit `https://github.com/<your-fork>/tree/master`
+2. **Tags**: Visit `https://github.com/<your-fork>/tags`
 3. **Commit History**: Ensure latest commit matches upstream
+
+Replace `<your-fork>` with your repository path (e.g., `username/repository`).
 
 ## Future Maintenance
 
