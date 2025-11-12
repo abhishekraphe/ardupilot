@@ -21,6 +21,16 @@ If you are reading this page, you are possibly interested in contributing to our
 
 Please see our [wiki article](https://ardupilot.org/dev/docs/submitting-patches-back-to-master.html).
 
+## Code Review with Custom Agents
+
+Before submitting your pull request, consider using our custom agents for automated code review:
+
+* **DO178C Code Reviewer**: Reviews code for aviation safety standards compliance
+* See [Custom Agent Usage Guide](../docs/custom-agent-usage.md) for details on how to use custom agents
+* Quick reference: [Custom Agent Quick Reference](../docs/custom-agent-quick-reference.md)
+
+Using custom agents helps ensure your code meets quality and safety standards before human review.
+
 # Development Team
 
 The ArduPilot project is open source and [maintained](https://github.com/ArduPilot/ardupilot#maintainers) by a team of volunteers.

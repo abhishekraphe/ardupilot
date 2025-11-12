@@ -33,9 +33,9 @@ It is continually being expanded to provide support for new emerging vehicle typ
 
 - Rover: [code](https://github.com/ArduPilot/ardupilot/tree/master/Rover), [wiki](https://ardupilot.org/rover/index.html)
 
-- ArduSub : [code](https://github.com/ArduPilot/ardupilot/tree/master/ArduSub), [wiki](http://ardusub.com/)
+- ArduSub: [code](https://github.com/ArduPilot/ardupilot/tree/master/ArduSub), [wiki](https://www.ardusub.com/)
 
-- Antenna Tracker : [code](https://github.com/ArduPilot/ardupilot/tree/master/AntennaTracker), [wiki](https://ardupilot.org/antennatracker/index.html)
+- Antenna Tracker: [code](https://github.com/ArduPilot/ardupilot/tree/master/AntennaTracker), [wiki](https://ardupilot.org/antennatracker/index.html)
 
 ## User Support & Discussion Forums ##
 
@@ -67,6 +67,8 @@ It is continually being expanded to provide support for new emerging vehicle typ
 - We have an active group of Beta Testers to help us improve our code: [release procedures](https://ardupilot.org/dev/docs/release-procedures.html)
 
 - Desired Enhancements and Bugs can be posted to the [issues list](https://github.com/ArduPilot/ardupilot/issues).
+
+- Use our [custom agents for code review](docs/custom-agent-usage.md) to ensure code quality and safety standards compliance
 
 - Help other users with log analysis in the [support forums](https://discuss.ardupilot.org/)
 
