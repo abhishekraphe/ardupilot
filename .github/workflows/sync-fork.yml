@@ -1,0 +1,61 @@
+name: Sync Fork with Upstream
+
+# This workflow syncs the forked repository with the upstream ArduPilot repository
+# It can be triggered manually or run on a schedule
+
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    # Run weekly on Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/ArduPilot/ardupilot.git || true
+          git remote -v
+      
+      - name: Fetch from upstream
+        run: |
+          git fetch upstream --tags --verbose
+      
+      - name: Sync master branch
+        run: |
+          # Create or update local master branch
+          git checkout -B master upstream/master
+          
+          # Push to origin
+          git push origin master --force-with-lease --verbose
+      
+      - name: Push all tags
+        run: |
+          git push origin --tags --verbose
+      
+      - name: Summary
+        run: |
+          echo "## Sync Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Master branch synchronized" >> $GITHUB_STEP_SUMMARY
+          echo "✅ All tags pushed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Latest commit on master:" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          git log -1 --oneline master >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Total tags: $(git tag | wc -l)" >> $GITHUB_STEP_SUMMARY
