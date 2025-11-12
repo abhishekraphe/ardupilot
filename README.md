@@ -68,6 +68,8 @@ It is continually being expanded to provide support for new emerging vehicle typ
 
 - Desired Enhancements and Bugs can be posted to the [issues list](https://github.com/ArduPilot/ardupilot/issues).
 
+- Use our [custom agents for code review](docs/custom-agent-usage.md) to ensure code quality and safety standards compliance
+
 - Help other users with log analysis in the [support forums](https://discuss.ardupilot.org/)
 
 - Improve the wiki and chat with other [wiki editors on Discord #documentation](https://discord.com/channels/ardupilot)
