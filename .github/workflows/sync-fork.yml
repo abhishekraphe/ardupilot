@@ -27,7 +27,13 @@ jobs:
       
       - name: Add upstream remote
         run: |
-          git remote add upstream https://github.com/ArduPilot/ardupilot.git || true
+          # Check if upstream remote exists, add only if it doesn't
+          if ! git remote | grep -q "^upstream$"; then
+            git remote add upstream https://github.com/ArduPilot/ardupilot.git
+            echo "Added upstream remote"
+          else
+            echo "Upstream remote already exists"
+          fi
           git remote -v
       
       - name: Fetch from upstream
@@ -39,8 +45,14 @@ jobs:
           # Create or update local master branch
           git checkout -B master upstream/master
           
-          # Push to origin
-          git push origin master --force-with-lease --verbose
+          # Check if origin/master exists and compare
+          if git rev-parse --verify origin/master >/dev/null 2>&1; then
+            # Use force-with-lease for safety - will fail if remote changed unexpectedly
+            git push origin master --force-with-lease --verbose
+          else
+            # First time push, no need for force
+            git push origin master --verbose
+          fi
       
       - name: Push all tags
         run: |

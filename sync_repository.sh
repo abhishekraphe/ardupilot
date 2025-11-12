@@ -59,14 +59,17 @@ fi
 echo ""
 echo "Step 5: Verifying sync..."
 echo "Fetching from origin to verify..."
-git fetch origin
+git fetch origin --tags
 
-# Count tags on origin
-ORIGIN_TAGS=$(git ls-remote --tags origin | wc -l)
-UPSTREAM_TAGS=$(git tag | wc -l)
+# Count local tags (these should now match what's on origin)
+LOCAL_TAGS=$(git tag | wc -l)
 
-echo "Tags on upstream: $UPSTREAM_TAGS"
-echo "Tags pushed to origin: $ORIGIN_TAGS"
+echo "Total tags synchronized: $LOCAL_TAGS"
+
+# Get repository URL from origin remote
+REPO_URL=$(git remote get-url origin)
+REPO_URL=${REPO_URL%.git}  # Remove .git suffix if present
+REPO_URL=${REPO_URL#https://github.com/}  # Extract owner/repo from URL
 
 echo ""
 echo "================================="
@@ -76,4 +79,4 @@ echo ""
 echo "Your forked repository is now synchronized with the upstream ArduPilot repository."
 echo "Master branch and all tags have been pushed."
 echo ""
-echo "You can verify the sync at: https://github.com/abhishekraphe/ardupilot"
+echo "You can verify the sync at: https://github.com/${REPO_URL}"
